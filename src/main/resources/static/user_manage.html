@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理 - SkyOJ系统</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/administrator.css">
+</head>
+<body>
+<header>
+    <div class="logo">SkyOJ</div>
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="problem_set.html" class="active">题库</a>
+        <a href="profile.html">个人信息</a>
+    </nav>
+</header>
+
+<main>
+    <div id="admin-panel" class="admin-only card">
+        <h2>用户管理</h2>
+        <div class="add-user-section">
+            <button id="add-user-btn" class="action-btn add-btn">添加用户</button>
+            <div id="add-user-form" style="display: none;">
+                <input type="text" id="new-username" placeholder="输入用户名" required>
+                <button id="submit-user-btn" class="action-btn submit-btn">提交</button>
+                <button id="cancel-user-btn" class="action-btn cancel-btn">取消</button>
+            </div>
+        </div>
+        <div id="loading" class="loading">
+            <p>加载用户数据中...</p>
+        </div>
+
+        <div id="error-message" class="error-message" style="display: none;"></div>
+
+        <table class="admin-table">
+            <thead>
+            <tr>
+                <th>用户ID</th>
+                <th>用户名</th>
+                <th>身份</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="users-table">
+            <!-- 动态加载用户数据 -->
+            </tbody>
+        </table>
+    </div>
+    <!-- 悬浮框遮罩层 -->
+    <div id="edit-user-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>编辑用户</h3>
+            <form id="edit-user-form">
+                <div class="form-group">
+                    <label for="edit-username">用户名</label>
+                    <input type="text" id="edit-username" required>
+                </div>
+                <div class="form-group">
+                    <label>权限</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="edit-admin" value="true"> 管理员
+                        </label>
+                        <label>
+                            <input type="radio" name="edit-admin" value="false" checked> 普通用户
+                        </label>
+                    </div>
+                </div>
+                <input type="hidden" id="edit-user-id">
+                <button type="submit" class="submit-btn">保存</button>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+<script type="module" src="js/user_manage.js"></script>
+</html>

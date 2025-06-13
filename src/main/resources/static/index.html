@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <title>首页 - SkyOJ</title>
+</head>
+<body>
+
+<header>
+    <div class="logo">SkyOJ</div>
+    <nav>
+        <a href="index.html" class="active">首页</a>
+        <a href="problem_set.html">题库</a>
+        <a href="profile.html">个人信息</a>
+    </nav>
+</header>
+
+<main>
+    <div class="card">
+        <div id="user-container">
+            <div class="loading">加载用户信息中...</div>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="solved-count">0</div>
+                <div class="stat-label">已解决</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="submission-count">0</div>
+                <div class="stat-label">总提交</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>欢迎使用SkyOJ</h2>
+        <p>一个面向算法竞赛的在线判题系统</p>
+        <p><a href="problem_set.html">进入题库 →</a></p>
+    </div>
+
+    <div class="card">
+        <h2>系统公告</h2>
+        <p>仰观宇宙之大，俯察品类之盛</p>
+    </div>
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* 确保问题内容容器是 flex 容器 */
+#problem-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* 确保有足够高度 */
+}
+
+/* 提交按钮样式调整 */
+.submit-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 2rem; /* 增加上边距 */
+    margin-left: auto; /* 替代 align-self: flex-end */
+    width: fit-content; /* 根据内容自适应宽度 */
+    display: block; /* 确保独占一行 */
+}
+
+.submit-btn:hover {
+    background-color: green;
+}
+.solution-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px; /* 减少横向内边距 */
+    font-size: 14px; /* 字体略小 */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-left: auto; /* 居右关键属性 */
+    display: block; /* 确保可以使用 margin-left: auto 居右 */
+    width: fit-content; /* 宽度根据内容自适应 */
+}
+
+.solution-btn:hover {
+    background-color: #45a049;
+}
+.sample-data {
+     background-color: #f8f9fa;
+     border-left: 4px solid var(--primary-color);
+     padding: 1rem;
+     margin: 1rem 0;
+     font-family: monospace;
+     white-space: pre-wrap;
+     overflow-x: auto;
+ }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>提交代码 - SkyOJ系统</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/submit.css" />
+
+</head>
+<body>
+<header>
+  <div class="logo">SkyOJ</div>
+  <nav>
+    <a href="index.html">首页</a>
+    <a href="problem_set.html">题库</a>
+    <a href="profile.html">个人信息</a>
+  </nav>
+</header>
+<main>
+  <div class="problem-container" id="problem-content">
+    <h2>加载题目中...</h2>
+  </div>
+
+  <div class="editor-container">
+    <div class="editor-header">
+      <h3>代码编辑器 </h3>
+      <p>时间限制: 5s</p>
+    </div>
+    <div class="editor-wrapper">
+      <textarea id="editor"># 在这里编写你的代码目前仅支持Python3</textarea>
+    </div>
+    <button class="submit-btn" onclick="submitCode()">提交代码</button>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+
+<script src="js/submit.js"> </script>
+</body>
+</html>

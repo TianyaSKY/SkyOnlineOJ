@@ -1,0 +1,116 @@
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+    <title>SkyOJ - 个人信息</title>
+</head>
+<body>
+<header>
+    <div class="logo">SkyOJ</div>
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="problem_set.html" class="active">题库</a>
+        <a href="profile.html">个人信息</a>
+    </nav>
+</header>
+<main>
+    <div id="profile-info">
+        <!-- 默认显示未登录状态 -->
+        <h2>个人信息</h2>
+        <p>你还没有登录点击<a href="login.html">去登录</a></p>
+    </div>
+
+    <!-- 管理员专属区域（默认隐藏） -->
+    <div id="admin-panel" style="display: none;">
+        <h2>管理员控制台</h2>
+        <div class="admin-features">
+            <a href="user_manage.html"><button class="admin-btn">用户管理</button></a>
+            <a href="problem_manage.html"><button class="admin-btn">题目管理</button></a>
+            <a href="case_management.html"><button class="admin-btn">用例管理</button></a>
+        </div>
+    </div>
+
+    <!-- 普通用户专属区域（默认隐藏） -->
+    <div id="user-panel" style="display: none;">
+        <h2>用户中心</h2>
+        <div class="user-features">
+            <button class="user-btn">我的提交</button>
+            <button class="user-btn">题目收藏</button>
+        </div>
+    </div>
+
+</main>
+
+<script>
+    fetch("/api/profile")
+        .then(res => {
+            if (!res.ok) throw new Error('未登录');
+            return res.json();
+        })
+        .then(user => {
+            const profileContainer = document.getElementById('profile-info');
+
+            // 清空默认内容
+            profileContainer.innerHTML = '';
+
+            // 公共个人信息
+            profileContainer.innerHTML = `
+                <h2>个人信息</h2>
+                <p>用户名：${user.UserName}</p>
+                <p>用户ID：${user.User_ID}</p>
+                <p>身份：${user.admin ? '管理员' : '普通用户'}</p>
+                <button id="logoutBtn" onclick="logout()">退出登录</button>
+            `;
+
+            // 根据身份显示不同面板
+            if (user.admin) {
+                document.getElementById('admin-panel').style.display = 'block';
+            } else {
+                document.getElementById('user-panel').style.display = 'block';
+            }
+        })
+        .catch(error => {
+            console.log('未登录或获取信息失败:', error);
+        });
+    function logout() {
+        const btn = document.getElementById('logoutBtn');
+        btn.disabled = true;
+        btn.textContent = '退出中...';
+
+        fetch('/api/logout', {
+            method: 'POST',
+            credentials: 'include'  // 确保携带cookie
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('退出失败: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // 清除前端状态
+                document.getElementById('profile-info').innerHTML = `
+            <h2>个人信息</h2>
+            <p>你还没有登录点击<a href="login.html">去登录</a></p>
+        `;
+
+                // 隐藏特权内容
+                document.getElementById('admin-panel').style.display = 'none';
+                document.getElementById('user-panel').style.display = 'none';
+
+                // 跳转到首页（2秒延迟）
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            })
+            .catch(error => {
+                console.error('退出错误:', error);
+                alert(error.message);
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.textContent = '退出登录';
+            });
+    }
+</script>
+</body>

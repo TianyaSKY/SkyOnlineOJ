@@ -1,0 +1,35 @@
+.solution-detail-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+.solution-detail-content .solution-header {
+    margin-bottom: 1.5rem;
+}
+
+.solution-detail-content .solution-author {
+    font-weight: bold;
+    color: #4CAF50;
+    margin-top: 0.5rem;
+}
+
+.solution-detail-content .solution-body {
+    line-height: 1.6;
+    white-space: pre-wrap; /* 保留换行 */
+}
+.solution-detail-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.problem-info {
+    flex: 1;
+    max-width: 40%;
+}
+
+.solution-detail-content {
+    flex: 2;
+    max-width: 60%;
+}

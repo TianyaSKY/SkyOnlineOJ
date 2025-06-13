@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e2f;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #2a2f4a;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.test-case {
+    background-color: #2f354d;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.test-case.passed {
+    border-color: #28a745;
+    background-color: #253a2e;
+}
+
+.test-case.failed {
+    border-color: #dc3545;
+    background-color: #3a2a2a;
+}
+
+.test-number {
+    font-weight: bold;
+}
+
+.test-status {
+    font-size: 0.9rem;
+    padding: 0.4em 1em;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-ac {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-wa {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-tle {
+    background-color: #ffc107;
+    color: black;
+}
+
+.summary {
+    margin-top: 2rem;
+    background-color: #353b5c;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #61dafb;
+}
+
+.summary-item {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: #dddddd;
+}
+
+.test-case-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 1rem;
+    background-color: #2a2f4a;
+    border-radius: 8px;
+    justify-content: flex-start;
+}
+
+.test-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: default;
+    transition: transform 0.2s ease;
+}
+
+.test-box:hover {
+    transform: scale(1.1);
+}
+
+.test-box.ac {
+    background-color: #28a745;
+    color: white;
+}
+
+.test-box.wa {
+    background-color: #dc3545;
+    color: white;
+}
+
+.test-box.tle {
+    background-color: #ffc107;
+    color: black;
+}
+
+.test-box.error {
+    background-color: #6c757d;
+    color: white;
+}
+
+h2,h3{
+    color: white;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}

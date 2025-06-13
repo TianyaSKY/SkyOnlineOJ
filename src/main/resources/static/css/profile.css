@@ -1,0 +1,262 @@
+/* 个人信息页面专用样式 */
+
+/* 基础布局 */
+.profile-main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* 卡片通用样式 */
+.profile-card,
+.admin-panel,
+.user-panel {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover,
+.admin-panel:hover,
+.user-panel:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* 个人信息头部 */
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.profile-header h2 {
+    font-size: 1.75rem;
+    color: #2c3e50;
+    margin: 1.5rem 0 0.5rem;
+    font-weight: 600;
+}
+
+.login-prompt {
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.login-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.login-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* 用户头像 */
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* 用户详情 */
+.profile-details {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+.detail-item:hover {
+    background: #ecf0f1;
+}
+
+.detail-item i {
+    margin-right: 1rem;
+    color: #3498db;
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.user-role {
+    font-size: 1rem;
+    color: #7f8c8d;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #f1f8fe;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+}
+
+.user-role i {
+    color: #f39c12;
+}
+
+/* 退出按钮 */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    gap: 0.5rem;
+}
+
+.logout-btn:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+.logout-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* 面板标题 */
+.panel-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.panel-title i {
+    color: #3498db;
+}
+
+/* 功能区域 */
+.admin-features,
+.user-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 140px;
+    border: 1px solid #ecf0f1;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: #3498db;
+}
+
+.feature-card i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #3498db;
+}
+
+.feature-card span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* 管理员特定样式 */
+.admin-panel .feature-card:hover {
+    border-color: #9b59b6;
+}
+
+.admin-panel .feature-card i {
+    color: #9b59b6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .profile-main {
+        padding: 0 1rem;
+    }
+
+    .profile-card,
+    .admin-panel,
+    .user-panel {
+        padding: 1.5rem;
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .admin-features,
+    .user-features {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .detail-item {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .detail-item i {
+        font-size: 1rem;
+    }
+}

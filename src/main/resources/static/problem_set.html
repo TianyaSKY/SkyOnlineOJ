@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>题库 - SkyOJ系统</title>
+  <link rel="stylesheet" href="css/problem_set.css" />
+</head>
+<body>
+<header>
+  <div class="logo">SkyOJ</div>
+  <nav>
+    <a href="index.html">首页</a>
+    <a href="problem_set.html" class="active">题库</a>
+    <a href="profile.html">个人信息</a>
+  </nav>
+</header>
+
+<main>
+  <div class="card">
+    <h2>题库</h2>
+
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="搜索题目..." id="search-input">
+      <select class="filter-select" id="difficulty-filter">
+        <option value="">所有难度</option>
+        <option value="0">简单</option>
+        <option value="1">中等</option>
+        <option value="2">困难</option>
+      </select>
+    </div>
+
+    <ul class="problem-list" id="problem-list">
+      <!-- 题目列表将通过JS动态加载 -->
+    </ul>
+  </div>
+</main>
+
+<script>
+  // 难度映射
+  const difficultyMap = {
+    0: { text: '简单', class: 'difficulty-easy' },
+    1: { text: '中等', class: 'difficulty-medium' },
+    2: { text: '困难', class: 'difficulty-hard' }
+  };
+
+  // 获取DOM元素
+  const problemList = document.getElementById('problem-list');
+  const searchInput = document.getElementById('search-input');
+  const difficultyFilter = document.getElementById('difficulty-filter');
+
+  // 加载题目列表
+  function loadProblems() {
+    fetch("/api/problems")
+            .then(res => {
+              if (!res.ok) {
+                throw new Error('网络响应不正常');
+              }
+              return res.json();
+            })
+            .then(data => {
+              renderProblems(data);
+            })
+            .catch(error => {
+              console.error('加载题目失败:', error);
+              problemList.innerHTML = '<li class="error-message">加载题目失败，请稍后重试</li>';
+            });
+  }
+
+  // 渲染题目列表
+  function renderProblems(problems) {
+    problemList.innerHTML = problems.map(p => {
+      const difficulty = difficultyMap[parseInt(p.Diff, 10)] || difficultyMap[0];
+      return `
+          <li class="problem-item">
+            <a href="problem.html?id=${p.id}" class="problem-link">
+              <div class="problem-info">
+                <span class="problem-id">${p.id}.</span>
+                <span class="problem-title">${p.title}</span>
+              </div>
+              <span class="difficulty ${difficulty.class}">${difficulty.text}</span>
+            </a>
+          </li>
+        `;
+    }).join("");
+  }
+
+  // 初始化加载
+  loadProblems();
+
+  // 搜索和筛选功能
+  searchInput.addEventListener('input', filterProblems);
+  difficultyFilter.addEventListener('change', filterProblems);
+
+  function filterProblems() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const difficultyValue = difficultyFilter.value;
+
+    fetch("/api/problems")
+            .then(res => res.json())
+            .then(data => {
+              const filtered = data.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(searchTerm) ||
+                        p.id.toString().includes(searchTerm);
+                const matchesDifficulty = difficultyValue === '' || p.Diff.toString() === difficultyValue;
+                return matchesSearch && matchesDifficulty;
+              });
+              renderProblems(filtered);
+            });
+  }
+</script>
+</body>
+</html>

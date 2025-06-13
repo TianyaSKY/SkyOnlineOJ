@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评测点管理系统</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/case_manage.css">
+
+</head>
+<body>
+<header>
+    <div class="logo">SkyOJ</div>
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="problem_set.html">题库</a>
+        <a href="profile.html">个人信息</a>
+    </nav>
+</header>
+
+<div class="container">
+    <header>
+        <h1>评测点管理系统</h1>
+        <button id="add-testcase-btn" class="btn-primary">添加新评测点</button>
+    </header>
+
+    <div class="testcases-container">
+        <table id="testcases-table">
+            <thead>
+            <tr>
+                <th>题目ID</th>
+                <th>评测点编号</th>
+                <th>输入数据</th>
+                <th>输出数据</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="testcases-list">
+                <!-- 评测点列表将通过JS动态加载 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 添加评测点模态框 -->
+<div id="add-testcase-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>添加新评测点</h2>
+        <form id="add-testcase-form">
+            <div class="form-group">
+                <label for="testcase-problem-id">题目ID</label>
+                <input type="text" id="testcase-problem-id" required>
+            </div>
+            <div class="form-group">
+                <label for="testcase-number">评测点编号</label>
+                <input type="text" id="testcase-number" required>
+            </div>
+            <div class="form-group">
+                <label for="testcase-input">输入数据</label>
+                <textarea id="testcase-input" rows="5"  placeholder="请输入测试输入..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="testcase-output">输出数据</label>
+                <textarea id="testcase-output" rows="5" required placeholder="请输入预期输出..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">提交</button>
+        </form>
+    </div>
+</div>
+
+<script type="module" src="js/case_manage.js"></script>
+</body>
+</html>

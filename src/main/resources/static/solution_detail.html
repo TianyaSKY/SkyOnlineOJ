@@ -2,31 +2,30 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8" />
-    <title>题解详情</title>
+    <title>题解详情 - SkyOJ</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/solution.css" />
     <link rel="stylesheet" href="css/solution_detail.css" />
 </head>
 <body>
-    <header>
-        <div class="logo">SkyOJ</div>
-        <nav>
-            <a href="index.html">首页</a>
-            <a href="problem_set.html">题库</a>
-            <a href="profile.html">个人信息</a>
-        </nav>
-    </header>
+<header>
+    <div class="logo">SkyOJ</div>
+    <nav>
+        <a href="index.html" class="active">首页</a>
+        <a href="problem_set.html">题库</a>
+        <a href="profile.html">个人信息</a>
+    </nav>
+</header>
 
-    <main class="solution-detail-container">
+    <main class="container solution-detail-container">
         <!-- 左侧题目信息 -->
-        <div class="card problem-info" id="problem-info">
-            <!-- 题目信息将通过 API 加载到这里 -->
-        </div>
+        <section class="card problem-info" id="problem-info">
+            <div class="loading">加载题目信息中...</div>
+        </section>
 
         <!-- 右侧题解详情 -->
-        <div class="card solution-detail-content" id="solution-detail">
-            <!-- 题解内容将动态加载到这里 -->
-        </div>
+        <section class="card solution-detail-content" id="solution-detail">
+            <div class="loading">加载题解中...</div>
+        </section>
     </main>
 
     <script src="js/solution_detail.js"></script>

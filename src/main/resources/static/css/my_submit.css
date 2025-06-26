@@ -1,0 +1,108 @@
+/* 基础布局 */
+.submit-main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.page-title {
+    font-size: 1.75rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 筛选栏 */
+.filter-bar {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.filter-bar select {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: white;
+}
+
+/* 提交记录表格 */
+.submission-list table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.submission-list th,
+.submission-list td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.submission-list th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+}
+
+.submission-list tr:hover {
+    background-color: #f1f8fe;
+}
+
+/* 状态颜色 */
+.status-success { color: #2ecc71; }
+.status-danger { color: #e74c3c; }
+.status-warning { color: #f39c12; }
+.status-info { color: #3498db; }
+
+/* 分页 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.pagination button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .submit-main {
+        padding: 0 1rem;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .submission-list th,
+    .submission-list td {
+        font-size: 0.9rem;
+    }
+}

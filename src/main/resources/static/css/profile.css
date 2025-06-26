@@ -77,6 +77,11 @@
     font-weight: bold;
     background: linear-gradient(135deg, #3498db, #2ecc71);
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
 }
 
 /* 用户详情 */
@@ -153,6 +158,14 @@
     cursor: not-allowed;
 }
 
+.logout-btn i {
+    transition: transform 0.2s;
+}
+
+.logout-btn:hover i {
+    transform: rotate(90deg);
+}
+
 /* 面板标题 */
 .panel-title {
     font-size: 1.5rem;
@@ -209,6 +222,12 @@
     color: #2c3e50;
 }
 
+.feature-card small {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-top: 0.5rem;
+}
+
 /* 管理员特定样式 */
 .admin-panel .feature-card:hover {
     border-color: #9b59b6;
@@ -216,6 +235,11 @@
 
 .admin-panel .feature-card i {
     color: #9b59b6;
+}
+
+/* 整体背景色 */
+body {
+    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
 }
 
 /* 响应式设计 */

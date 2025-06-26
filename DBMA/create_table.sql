@@ -48,9 +48,14 @@ CREATE TABLE EVALUATION(
 );
 -- 提交记录
 CREATE TABLE SUBMIT(
-                       SUBMIT_ID INT PRIMARY KEY ,
-                       QUE_ID INT,
-                       USER_ID INT,
+                       SUBMIT_ID INT PRIMARY KEY ,  -- 提交记录ID
+                       QUE_ID INT,  -- 题目ID
+                       USER_ID INT, -- 用户ID
+                       RUN_TIME FLOAT,  -- 运行时间
+                       RUN_MEM FLOAT,  -- 运行内存
+                        CODE_LANG VARCHAR2(10),  -- 编程语言
+                        CODE_CONTENT CLOB,  -- 代码内容
+                        SUBMIT_TIME DATE,   -- 提交时间
                        ALL_THROUGH NUMBER(1),  -- 全部通过
                        FOREIGN KEY (QUE_ID) REFERENCES QUESTION(QUE_ID),
                        FOREIGN KEY (USER_ID) REFERENCES USERS(USER_ID)

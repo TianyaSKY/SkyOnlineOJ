@@ -1,44 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8" />
+    <title>SkyOJ - 个人信息</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/profile.css" />
-    <title>SkyOJ - 个人信息</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+
 <header>
     <div class="logo">SkyOJ</div>
     <nav>
         <a href="index.html">首页</a>
-        <a href="problem_set.html" class="active">题库</a>
-        <a href="profile.html">个人信息</a>
+        <a href="problem_set.html">题库</a>
+        <a href="profile.html" class="active">个人信息</a>
     </nav>
 </header>
-<main>
-    <div id="profile-info">
-        <!-- 默认显示未登录状态 -->
-        <h2>个人信息</h2>
-        <p>你还没有登录点击<a href="login.html">去登录</a></p>
+
+<main class="profile-main">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar-container">
+                <div class="avatar">SKY</div>
+            </div>
+            <h2>个人信息</h2>
+            <p class="login-prompt" id="profile-info">
+                你还没有登录，点击<a href="login.html" class="login-link">去登录</a>
+            </p>
+            <button id="logoutBtn" class="logout-btn" style="display: none;" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> 退出登录
+            </button>
+        </div>
+
+        <div class="profile-details" id="user-details" style="display: none;">
+            <div class="detail-item">
+                <i class="fas fa-user"></i> 用户名：${user.UserName}
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-id-badge"></i> 用户ID：${user.User_ID}
+            </div>
+            <div class="detail-item user-role">
+                <i class="fas fa-user-shield"></i> 身份：${user.admin ? '管理员' : '普通用户'}
+            </div>
+        </div>
     </div>
 
     <!-- 管理员专属区域（默认隐藏） -->
-    <div id="admin-panel" style="display: none;">
-        <h2>管理员控制台</h2>
+    <div id="admin-panel" class="admin-panel" style="display: none;">
+        <h2 class="panel-title"><i class="fas fa-cogs"></i> 管理员控制台</h2>
         <div class="admin-features">
-            <a href="user_manage.html"><button class="admin-btn">用户管理</button></a>
-            <a href="problem_manage.html"><button class="admin-btn">题目管理</button></a>
-            <a href="case_management.html"><button class="admin-btn">用例管理</button></a>
+            <a href="user_manage.html">
+                <div class="feature-card">
+                    <i class="fas fa-users-cog"></i>
+                    <span>用户管理</span>
+                    <small>查看与管理所有用户</small>
+                </div>
+            </a>
+            <a href="problem_manage.html">
+                <div class="feature-card">
+                    <i class="fas fa-book-open"></i>
+                    <span>题目管理</span>
+                    <small>添加或编辑题目内容</small>
+                </div>
+            </a>
+            <a href="case_management.html">
+                <div class="feature-card">
+                    <i class="fas fa-terminal"></i>
+                    <span>用例管理</span>
+                    <small>管理测试样例和输入输出</small>
+                </div>
+            </a>
         </div>
     </div>
 
     <!-- 普通用户专属区域（默认隐藏） -->
-    <div id="user-panel" style="display: none;">
-        <h2>用户中心</h2>
+    <div id="user-panel" class="user-panel" style="display: none;">
+        <h2 class="panel-title"><i class="fas fa-user-circle"></i> 用户中心</h2>
         <div class="user-features">
-            <button class="user-btn">我的提交</button>
-            <button class="user-btn">题目收藏</button>
+            <div class="feature-card" onclick="alert('功能开发中')">
+                <i class="fas fa-code-commit"></i>
+                <span>我的提交</span>
+                <small>查看历史提交记录</small>
+            </div>
+            <div class="feature-card" onclick="alert('功能开发中')">
+                <i class="fas fa-star"></i>
+                <span>题目收藏</span>
+                <small>查看收藏的题目列表</small>
+            </div>
         </div>
     </div>
-
 </main>
 
 <script>
@@ -49,20 +101,26 @@
         })
         .then(user => {
             const profileContainer = document.getElementById('profile-info');
+            const userDetails = document.getElementById('user-details');
+            const logoutBtn = document.getElementById('logoutBtn');
 
-            // 清空默认内容
-            profileContainer.innerHTML = '';
-
-            // 公共个人信息
-            profileContainer.innerHTML = `
-                <h2>个人信息</h2>
-                <p>用户名：${user.UserName}</p>
-                <p>用户ID：${user.User_ID}</p>
-                <p>身份：${user.admin ? '管理员' : '普通用户'}</p>
-                <button id="logoutBtn" onclick="logout()">退出登录</button>
+            // 显示用户信息
+            profileContainer.style.display = 'none';
+            userDetails.innerHTML = `
+                <div class="detail-item">
+                    <i class="fas fa-user"></i> 用户名：${user.UserName}
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-id-badge"></i> 用户ID：${user.User_ID}
+                </div>
+                <div class="detail-item user-role">
+                    <i class="fas fa-user-shield"></i> 身份：${user.admin ? '管理员' : '普通用户'}
+                </div>
             `;
+            userDetails.style.display = 'block';
+            logoutBtn.style.display = 'inline-block';
 
-            // 根据身份显示不同面板
+            // 显示不同面板
             if (user.admin) {
                 document.getElementById('admin-panel').style.display = 'block';
             } else {
@@ -72,6 +130,7 @@
         .catch(error => {
             console.log('未登录或获取信息失败:', error);
         });
+
     function logout() {
         const btn = document.getElementById('logoutBtn');
         btn.disabled = true;
@@ -79,26 +138,21 @@
 
         fetch('/api/logout', {
             method: 'POST',
-            credentials: 'include'  // 确保携带cookie
+            credentials: 'include'
         })
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('退出失败: ' + response.status);
-                }
+                if (!response.ok) throw new Error('退出失败: ' + response.status);
                 return response.json();
             })
             .then(data => {
                 // 清除前端状态
-                document.getElementById('profile-info').innerHTML = `
-            <h2>个人信息</h2>
-            <p>你还没有登录点击<a href="login.html">去登录</a></p>
-        `;
-
-                // 隐藏特权内容
+                document.getElementById('profile-info').style.display = 'block';
+                document.getElementById('user-details').style.display = 'none';
                 document.getElementById('admin-panel').style.display = 'none';
                 document.getElementById('user-panel').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'none';
 
-                // 跳转到首页（2秒延迟）
+                // 跳转到首页
                 setTimeout(() => {
                     window.location.href = 'index.html';
                 }, 2000);
@@ -113,4 +167,6 @@
             });
     }
 </script>
+
 </body>
+</html>

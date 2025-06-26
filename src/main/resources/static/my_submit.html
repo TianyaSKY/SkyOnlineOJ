@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <title>SkyOJ - 我的提交</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/my_submit.css" />
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<header>
+    <div class="logo">SkyOJ</div>
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="problem_set.html">题库</a>
+        <a href="profile.html">个人信息</a>
+        <a href="my_submit.html" class="active">我的提交</a>
+    </nav>
+</header>
+
+<main class="submit-main">
+    <h2 class="page-title"><i class="fas fa-code-commit"></i> 我的提交记录</h2>
+
+    <!-- 筛选与搜索 -->
+    <div class="filter-bar">
+        <select id="statusFilter">
+            <option value="">全部状态</option>
+            <option value="accepted">通过</option>
+            <option value="wrong-answer">错误答案</option>
+            <option value="running">运行中</option>
+            <option value="compile-error">编译错误</option>
+        </select>
+    </div>
+
+    <!-- 提交记录表格 -->
+    <div class="submission-list" id="submissionList">
+        <!-- 数据由 JS 渲染 -->
+    </div>
+
+    <!-- 分页控件 -->
+    <div class="pagination">
+        <button onclick="prevPage()" id="prevBtn">上一页</button>
+        <span id="pageInfo">第 1 页 / 共 1 页</span>
+        <button onclick="nextPage()" id="nextBtn">下一页</button>
+    </div>
+</main>
+
+<!-- 引入 JS 文件 -->
+<script src="js/my_submit.js"></script>
+</body>
+</html>
